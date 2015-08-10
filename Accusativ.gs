@@ -1,8 +1,10 @@
 /**
- * Turn on <streetName>.
+ * Turn on <streetName>
  * Поверните на улицу
+ * Let's take <streetName>
+ * Едем через улицу
  * @customfunction
- * 09/08/15
+ * 10/08/15
  */
 function Accusativ(StringTTS) {
   StringTTS = StringTTS.replace(/(\bна\b)(.*?)\b(улица|набережная|дорога|линия|аллея|площадь|просека|автодорога|эстакада|магистраль|дамба)/, // feminine
