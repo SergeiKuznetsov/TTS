@@ -15,15 +15,14 @@ function Accusativ(StringTTS) {
       streetName = streetName.replace(/а\b/,"у"); // Репищева -> Репищеву
       streetName = streetName.replace(/-я\b/,"-ю"); // 1-я -> 1-ю
       switch (streetStatus) {
-        case 'улица': streetStatus = 'улицу'; break
-        case 'набережная': streetStatus = 'набережную'; break
-        case 'дорога': streetStatus = 'дорогу'; break
-        case 'линия': streetStatus = 'линию'; break
-        case 'аллея': streetStatus = 'аллею'; break
-        case 'просека': streetStatus = 'просеку'; break
-        case 'эстакада': streetStatus = 'эстакаду'; break
-        case 'дамба': streetStatus = 'дамбу'; break
-      streetName = streetName.replace(/-я\b/,"-ю"); // 1-я -> 1-ю
+        case 'улица': streetStatus = 'улицу'; break;
+        case 'набережная': streetStatus = 'набережную'; break;
+        case 'дорога': streetStatus = 'дорогу'; break;
+        case 'линия': streetStatus = 'линию'; break;
+        case 'аллея': streetStatus = 'аллею'; break;
+        case 'просека': streetStatus = 'просеку'; break;
+        case 'эстакада': streetStatus = 'эстакаду'; break;
+        case 'дамба': streetStatus = 'дамбу'; break;
       }  
       return on + streetName + streetStatus;
     });
