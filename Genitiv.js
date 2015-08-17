@@ -5,16 +5,17 @@
  * 17/08/15
  */
 function Genitiv(StringTTS) {
-  StringTTS = StringTTS.replace(/\bдо\s+(на|в|к)\b/, 
-    function (toto,to) { 
+  StringTTS = StringTTS.replace(/\bдо\s+(на|в|к)\b/,
+    function (toto,to) {
       return "до поворота " + to;
     });
   result = StringTTS.replace(/(\bдо\b)(.*?)\b(улица|набережная|дорога|линия|аллея|площадь|просека|автодорога|эстакада|магистраль|дамба)/, // feminine
-    function (onFullName,to__until,streetName,streetStatus) { 
+    function (onFullName,to__until,streetName,streetStatus) {
       streetName = streetName.replace(/ая\b/g,"ой"); // Пушкинская -> Пушкинской, Садовая-Спасская -> Садовой-Спасской
       streetName = streetName.replace(/яя\b/g,"ей"); // Зимняя -> Зимней
       streetName = streetName.replace(/ья\b/,"ьей"); // третья -> третьей, Казачья -> Казачьей
       streetName = streetName.replace(/а\b/,"ой"); // Репищева -> Репищевой
+      streetName = streetName.replace(/3-я\b/,"3-ей"); // 3-я -> 3-ей
       streetName = streetName.replace(/-я\b/,"-ой"); // 1-я -> 1-ой
       switch (streetStatus) {
         case 'улица': streetStatus = 'улицы'; break;
@@ -28,12 +29,12 @@ function Genitiv(StringTTS) {
         case 'эстакада': streetStatus = 'эстакады'; break;
         case 'магистраль': streetStatus = 'магистрали'; break;
         case 'дамба': streetStatus = 'дамбы'; break;
-      }  
+      }
       return to__until + streetName + streetStatus;
     });
-  if (StringTTS !== result) { return result }  
+  if (StringTTS !== result) { return result }
   result = StringTTS.replace(/(\bдо\b)(.*?)\b(проспект|переулок|проезд|тупик|бульвар|тракт|объезд|заезд|съезд|просек|микрорайон|взвоз|спуск|переезд|квартал|путепровод|мост|обвод|поселок|городок|разворот|шлагбаум|обход|подъезд)/, // masculine
-    function (onFullName,to__until,streetName,streetStatus) { 
+    function (onFullName,to__until,streetName,streetStatus) {
       streetName = streetName.replace(/чий\b/,"чьего"); // Заячий -> Заячьего
       streetName = streetName.replace(/тий\b/,"тьего"); // третий -> третьего
       streetName = streetName.replace(/ний\b/,"него"); // Верхний -> Верхнего
@@ -67,19 +68,19 @@ function Genitiv(StringTTS) {
         case 'обход': streetStatus = 'обхода'; break;
         case 'подъезд': streetStatus = 'подъезда'; break;
         case 'кольцо': streetStatus = 'кольца'; break;
-      }  
+      }
       return to__until + streetName + streetStatus;
     });
-  if (StringTTS !== result) { return result }  
+  if (StringTTS !== result) { return result }
   result = StringTTS.replace(/(\bдо\b)(.*?)\b(шоссе|кольцо)/, // neuter gender
-    function (onFullName,to__until,streetName,streetStatus) { 
+    function (onFullName,to__until,streetName,streetStatus) {
       streetName = streetName.replace(/ое\b/g,"ого"); // Нефтеюганское -> Нефтеюганского
       streetName = streetName.replace(/ье\b/,"ьего"); // третье -> третьего, Казачье -> Казачьего
       streetName = streetName.replace(/-е\b/,"-го"); // 1-е -> 1-го
       switch (streetStatus) {
         case 'кольцо': streetStatus = 'кольца'; break;
-      }  
+      }
       return to__until + streetName + streetStatus;
-    });  
+    });
   return result;
 }
