@@ -2,7 +2,7 @@
  * Continue straight for X minutes to <streetName>.
  * продолжайте движение X минут до улицы
  * @customfunction
- * 10/08/15
+ * 17/08/15
  */
 function Genitiv(StringTTS) {
   StringTTS = StringTTS.replace(/\bдо\s+(на|в|к)\b/, 
