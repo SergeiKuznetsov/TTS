@@ -66,15 +66,19 @@ function Genitiv(StringTTS) {
         case 'шлагбаум': streetStatus = 'шлагбаума'; break;
         case 'обход': streetStatus = 'обхода'; break;
         case 'подъезд': streetStatus = 'подъезда'; break;
+        case 'кольцо': streetStatus = 'кольца'; break;
       }  
       return to__until + streetName + streetStatus;
     });
   if (StringTTS !== result) { return result }  
-  result = StringTTS.replace(/(\bдо\b)(.*?)\b(шоссе)/, // neuter gender
+  result = StringTTS.replace(/(\bдо\b)(.*?)\b(шоссе|кольцо)/, // neuter gender
     function (onFullName,to__until,streetName,streetStatus) { 
       streetName = streetName.replace(/ое\b/g,"ого"); // Нефтеюганское -> Нефтеюганского
       streetName = streetName.replace(/ье\b/,"ьего"); // третье -> третьего, Казачье -> Казачьего
       streetName = streetName.replace(/-е\b/,"-го"); // 1-е -> 1-го
+      switch (streetStatus) {
+        case 'кольцо': streetStatus = 'кольца'; break;
+      }  
       return to__until + streetName + streetStatus;
     });  
   return result;
