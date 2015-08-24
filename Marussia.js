@@ -135,16 +135,5 @@ function Marussia(text) {
     text = Genitiv(text);
   }; 
 
-  // Fix Issue with Amper, Newton ....
-  text = text.replace(/(\d+)([^ 0-9])/,
-      function (full,num,char) {
-        switch (char) {
-          case 'А': char = '.а'; break;
-          case 'К': char = '.ка' + char; break;
-          case 'Н': char = '.н' + char; break;
-        }
-        return num + char;
-      });
-
   return text;
 }
