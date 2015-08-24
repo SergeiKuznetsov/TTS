@@ -134,5 +134,12 @@ function Marussia(text) {
   {
     text = Genitiv(text);
   }; 
+
+  // Fix Issue with Amper, Newton ....
+  text = text.replace(/\d+\S/,
+      function (num) {
+        return num.toLowerCase();
+      });
+
   return text;
 }
