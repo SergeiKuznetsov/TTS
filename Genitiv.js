@@ -4,8 +4,6 @@
 * @customfunction
 */
 function Genitiv(text) {
-    if ( text.match(/продолжайте движение/i) ) 
-    {
       text = text.replace(/\bдо\s+(на|в|к)\b/,
         function (toto,to) {
           return "до поворота " + to;
@@ -84,5 +82,9 @@ function Genitiv(text) {
           return to__until + streetName + streetStatus;
         });
       return result;
-    }; 
 } // Genitiv
+
+if ( text.match(/продолжайте движение/i) ) 
+{
+  text = Genitiv(text);
+}; 

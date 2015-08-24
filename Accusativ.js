@@ -6,8 +6,6 @@
 * @customfunction
 */
 function Accusativ(text) {
-  if ( text.match(/(поверните|съезд|держитесь|развернитесь).* на/i) ) 
-  {
     text = text.replace(/(\bна\b)(.*?)\b(улица|набережная|дорога|линия|аллея|площадь|просека|автодорога|эстакада|магистраль|дамба|деревня)/, // feminine
       function (onFullName,on,streetName,streetStatus) { 
         streetName = streetName.replace(/ая\b/g,"ую"); // Пушкинская -> Пушкинскую
@@ -33,6 +31,10 @@ function Accusativ(text) {
       function (onto,to) { 
         return to;
       });
-  };
   return text;
 } // Accusativ
+
+if ( text.match(/(поверните|съезд|держитесь|развернитесь).* на/i) ) 
+{
+  text = Accusativ(text);
+}; 
