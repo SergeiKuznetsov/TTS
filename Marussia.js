@@ -136,7 +136,7 @@ function Marussia(text) {
   }; 
 
   // Fix Issue with Amper, Newton ....
-  text = text.replace(/(\d+)(\S)/,
+  text = text.replace(/(\d+)([^ 0-9])/,
       function (full,num,char) {
         switch (char) {
           case 'А': char = '.а'; break;
