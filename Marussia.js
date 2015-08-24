@@ -122,11 +122,7 @@ function Marussia(text) {
     return result;
   } // Genitiv
 
-  if ( text.match(/(поверните|съезд|держитесь|развернитесь) \S+ на/i) ) 
-  {
-    text = Accusativ(text);
-  }
-  else if ( text.match(/развернитесь на/i) ) 
+  if ( text.match(/(поверните|съезд|держитесь|развернитесь).* на/i) ) 
   {
     text = Accusativ(text);
   }
