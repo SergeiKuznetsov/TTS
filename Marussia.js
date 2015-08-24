@@ -136,9 +136,14 @@ function Marussia(text) {
   }; 
 
   // Fix Issue with Amper, Newton ....
-  text = text.replace(/\d+\S/,
-      function (num) {
-        return num.toLowerCase();
+  text = text.replace(/(\d+)(\S)/,
+      function (full,num,char) {
+        switch (char) {
+          case 'А': char = '.а'; break;
+          case 'К': char = '.ка' + char; break;
+          case 'Н': char = '.н' + char; break;
+        }
+        return num + char;
       });
 
   return text;
