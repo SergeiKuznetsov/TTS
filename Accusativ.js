@@ -1,5 +1,6 @@
 /**
 * Turn on <streetName>  * Поверните <направо/налево> на <улицу>
+* Exit <left/right> on <streetName> * Съезд <справа/слева> на <улицу>
 * Let's take <streetName>  * Едем через <улицу>
 * Keep on  <streetName> * Держитесь <левее/правее> на <улицу>
 * U-Turn on <streetName> * Развернитесь на <улицу>
@@ -7,7 +8,7 @@
 */
 function Accusativ(text) {
     text = text.replace(/(\bна\b)(.*?)\b(улица|набережная|дорога|линия|аллея|площадь|просека|автодорога|эстакада|магистраль|дамба|деревня)/, // feminine
-      function (onFullName,on,streetName,streetStatus) { 
+      function (onFullName,on,streetName,streetStatus) {
         streetName = streetName.replace(/ая\b/g,"ую"); // Пушкинская -> Пушкинскую
         streetName = streetName.replace(/яя\b/g,"юю"); // Зимняя -> Зимнюю
         streetName = streetName.replace(/ья\b/,"ью"); // третья -> третью, Казачья -> Казачью
@@ -24,17 +25,17 @@ function Accusativ(text) {
           case 'эстакада': streetStatus = 'эстакаду'; break;
           case 'дамба': streetStatus = 'дамбу'; break;
           case 'деревня': streetStatus = 'деревню'; break;
-        }  
+        }
         return on + streetName + streetStatus;
       });
-    text = text.replace(/\bна\s+(на|в|к|под|с|от)\b/, 
-      function (onto,to) { 
+    text = text.replace(/\bна\s+(на|в|к|под|с|от)\b/,
+      function (onto,to) {
         return to;
       });
   return text;
 } // Accusativ
 
-if ( text.match(/(поверните|съезд|держитесь|развернитесь).* на/i) ) 
+if ( text.match(/(поверните|съезд|держитесь|развернитесь).* на/i) )
 {
   text = Accusativ(text);
-}; 
+};
