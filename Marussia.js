@@ -10,7 +10,7 @@ function Accusativ(text) {
       function (onto,to) {
         return to;
       });
-    text = text.replace(/(\bна\b)(.*?)\b(улица|набережная|дорога|линия|аллея|площадь|просека|автодорога|эстакада|магистраль|дамба|деревня)/, // feminine
+    text = text.replace(/(.*\bна\b)(.*?)\b(улица|набережная|дорога|линия|аллея|площадь|просека|автодорога|эстакада|магистраль|дамба|деревня)/, // feminine
       function (onFullName,on,streetName,streetStatus) {
         streetName = streetName.replace(/ая\b/g,"ую"); // Пушкинская -> Пушкинскую
         streetName = streetName.replace(/яя\b/g,"юю"); // Зимняя -> Зимнюю
