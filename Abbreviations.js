@@ -116,7 +116,7 @@ function Abbreviations(text) {
   text = text.replace(/()()Железня/g, 'Железня́'); // row: 112
   text = text.replace(/()()Алексин/g, 'Але́ксин'); // row: 113
   text = text.replace(/()()на (\d+[AB]*)(, \d+[AB]*)*: на/g, 'номер $3$4: на'); // row: 114
-  text = text.replace(/()() на ([^ ]*\d+)( |$)/g, ' на; $3;$4'); // row: 115
+  text = text.replace(/()() на\s+([^\s]+\d+)( |$)/g, ' на; $3;$4'); // row: 115
   text = text.replace(/()()([^\s])\/(\d)/g, '$3;дробь;$4'); // row: 116
   text = text.replace(/()()(\d)к([^\s])/g, '$3;корпус;$4'); // row: 117
   text = text.replace(/()()(\d)([КХ])(-| |$)/g, '$3$4а$5'); // row: 118
