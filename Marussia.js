@@ -1,9 +1,8 @@
-/**
-* Turn on <streetName>  * Поверните <направо/налево> на <улицу>
-* Exit <left/right> on <streetName> * Съезд <справа/слева> на <улицу>
-* Let's take <streetName>  * Едем через <улицу>
-* Keep on  <streetName> * Держитесь <левее/правее> на <улицу>
-* U-Turn on <streetName> * Развернитесь на <улицу>
+/** Accusativ - винительный падеж. Кого? Что?
+* turn <left/right> on <streetName>  * поверните <направо/налево> на <улицу>
+* exit <left/right> on <streetName> * съезд <справа/слева> на <улицу>
+* keep <left/right> on <streetName> * держитесь <левее/правее> на <улицу>
+* make u-turn on <streetName> * развернитесь на <улицу>
 * @customfunction
 */
 function Accusativ(text) {
@@ -35,9 +34,9 @@ function Accusativ(text) {
   return text;
 } // Accusativ
 
-/**
-* Continue straight for X minutes to <streetName>.
-* продолжайте движение X минут до улицы
+/** Genitiv - родительный падеж. Кого? Чего?
+* continue straight for X minutes to <streetName>.
+* продолжайте движение около X мин. до <улицы>
 * @customfunction
 */
 function Genitiv(text) {
@@ -121,12 +120,16 @@ function Genitiv(text) {
       return result;
 } // Genitiv
 
+/** Dative - дательный падеж. Кому? Чему?
+* Let's take <streetName>  * Поедем по <улице>
+*/
+
 if ( text.match(/(поверните|съезд|держитесь|развернитесь).* на/i) )
 {
   text = Accusativ(text);
 };
 
-if ( text.match(/продолжайте движение/i) ) 
+if ( text.match(/продолжайте движение/i) )
 {
   text = Genitiv(text);
 }; 
