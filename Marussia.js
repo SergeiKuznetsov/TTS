@@ -122,7 +122,12 @@ function Genitiv(text) {
 
 /** Dative - дательный падеж. Кому? Чему?
 * Let's take <streetName>  * Поедем по <улице>
+* @customfunction
 */
+function Dative(text) {
+  result = text;
+  return result;
+} // Dative
 
 if ( text.match(/(поверните|съезд|держитесь|развернитесь).* на/i) )
 {
