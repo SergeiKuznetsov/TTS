@@ -5,9 +5,9 @@ function Abbreviations(text) {
 
   text = text.replace(/()()Дерябиной/g, 'Деря́бинай'); // row: 2
   text = text.replace(/()()Либкнехта/g, 'Ли́бкньехта'); // row: 3
-  text = text.replace(/()()(\d+)(К)(-\d+)/g, '$3.кa.$5'); // row: 4
-  text = text.replace(/()()(\d+)(Н)(-\d+)/g, '$3.н.$5'); // row: 5
-  text = text.replace(/()()(\d+)(А)(-\d+)/g, '$3.аа.$5'); // row: 6
+//text = text.replace(/()()(\d+)(К)(-\d+)/g, '$3.кa.$5'); // row: 4
+//text = text.replace(/()()(\d+)(Н)(-\d+)/g, '$3.н.$5'); // row: 5
+//text = text.replace(/()()(\d+)(А)(-\d+)/g, '$3.аа.$5'); // row: 6
   text = text.replace(/()()Сивкова/g, 'Сивко́ва'); // row: 7
   text = text.replace(/()()Воровского/g, 'Вар овского'); // row: 8
   text = text.replace(/()()Лихвинцева/g, 'Льихвьинцева'); // row: 9
@@ -19,8 +19,8 @@ function Abbreviations(text) {
   text = text.replace(/()()Курчатова/g, 'Курча́атова'); // row: 15
   text = text.replace(/()()Никонова/g, 'Ни́конова'); // row: 16
   text = text.replace(/()()\bр\./g, 'река'); // row: 17
-  text = text.replace(/()()8 марта/g, 'восьмого марта'); // row: 18
-  text = text.replace(/()()1 мая /g, 'первого мая'); // row: 19
+//text = text.replace(/()()8 марта/g, 'восьмого марта'); // row: 18
+//text = text.replace(/()()1 мая /g, 'первого мая'); // row: 19
   text = text.replace(/()()Пастухова/g, 'Пастухо́ва'); // row: 20
   text = text.replace(/()()Толмачева/g, 'Толмачо́ва'); // row: 21
   text = text.replace(/()()Толмачёва/g, 'Толмачо́ва'); // row: 22
@@ -28,7 +28,7 @@ function Abbreviations(text) {
   text = text.replace(/()()Лобачёва/g, 'Лобачо́ва'); // row: 24
   text = text.replace(/()()Алабяна/g, 'Алабя́на'); // row: 25
   text = text.replace(/()()Вернова/g, 'Верно́ва'); // row: 26
-  text = text.replace(/()()Дубна/g, 'Дубна́'); // row: 27
+//text = text.replace(/()()Дубна/g, 'Дубна́'); // row: 27
   text = text.replace(/()()Понтекорво/g, 'Пон текорво'); // row: 28
   text = text.replace(/()()Кадыкова/g, 'Кады:ко́ва'); // row: 29
   text = text.replace(/()()Маслюкова/g, 'Масълюко́ва'); // row: 30
@@ -115,7 +115,7 @@ function Abbreviations(text) {
   text = text.replace(/()()Кнорина/g, 'Кно́рина'); // row: 111
   text = text.replace(/()()Железня/g, 'Железня́'); // row: 112
   text = text.replace(/()()Алексин/g, 'Але́ксин'); // row: 113
-  text = text.replace(/()()на (\d+[AB]*)(, \d+[AB]*)*: на/g, 'номер $3$4: на'); // row: 114
+//text = text.replace(/()()на (\d+[AB]*)(, \d+[AB]*)*: на/g, 'номер $3$4: на'); // row: 114
   text = text.replace(/()() на\s+([^\s]+\d+)( |$)/g, ' на; $3;$4'); // row: 115
   text = text.replace(/()()([^\s])\/(\d)/g, '$3;дробь;$4'); // row: 116
   text = text.replace(/()()(\d)к([^\s])/g, '$3;корпус;$4'); // row: 117
@@ -182,7 +182,7 @@ function Abbreviations(text) {
   text = text.replace(/()()держитесь(.+) на (\d+[AB]*)(, \d+[AB]*)*: на (.+)/g, 'держитесь $3 на $6; съезд номер $4$5'); // row: 178
   text = text.replace(/()()продолжайте движение(.+) до (\d+[AB]*)(, \d+[AB]*)*: на/g, 'продолжайте движение$3 до съезда номер $4$5: на'); // row: 179
   text = text.replace(/()()на\s+выезд/g, 'в сторону выезда'); // row: 180
-  text = text.replace(/()()Владимир/g, 'Влади́мир'); // row: 181
+  text = text.replace(/()()Владимир/g, 'Влади́мир'); // row: 181  
   return text;
 
 }
