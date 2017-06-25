@@ -6,7 +6,7 @@
 * @customfunction
 */
 function Accusativ(text) {
-    text = text.replace(/(.*\bна\b)(.*?)\b(улица|набережная|дорога|линия|аллея|площадь|просека|автодорога|эстакада|магистраль|дамба|хорда|коса|деревня|переправа|площадка|дорожка|трасса)/, // feminine
+    text = text.replace(/(.*\bна\b)(.*?)\b(улица|набережная|дорога|линия|аллея|площадь|просека|автодорога|эстакада|магистраль|дамба|хорда|коса|деревня|переправа|площадка|дорожка|трасса)\b/, // feminine
 
       function (onFullName,on,streetName,streetStatus) {
         streetName = streetName.replace(/ая\b/g,"ую"); // Пушкинская -> Пушкинскую
@@ -43,7 +43,7 @@ function Accusativ(text) {
 * @customfunction
 */
 function Genitiv(text) {
-      result = text.replace(/(\bдо\b)(.*?)\b(улица|набережная|дорога|линия|аллея|площадь|просека|автодорога|эстакада|магистраль|дамба)/, // feminine
+      result = text.replace(/(\bдо\b)(.*?)\b(улица|набережная|дорога|линия|аллея|площадь|просека|автодорога|эстакада|магистраль|дамба)\b/, // feminine
         function (onFullName,to__until,streetName,streetStatus) {
           streetName = streetName.replace(/ая\b/g,"ой"); // Пушкинская -> Пушкинской, Садовая-Спасская -> Садовой-Спасской
           streetName = streetName.replace(/яя\b/g,"ей"); // Зимняя -> Зимней
@@ -67,7 +67,7 @@ function Genitiv(text) {
           return to__until + streetName + streetStatus;
         });
       if (text !== result) { return result }
-      result = text.replace(/(\bдо\b)(.*?)\b(проспект|переулок|проезд|тупик|бульвар|тракт|объезд|заезд|съезд|просек|микрорайон|взвоз|спуск|переезд|квартал|путепровод|мост|обвод|поселок|городок|разворот|шлагбаум|обход|подъезд)/, // masculine
+      result = text.replace(/(\bдо\b)(.*?)\b(проспект|переулок|проезд|тупик|бульвар|тракт|объезд|заезд|съезд|просек|микрорайон|взвоз|спуск|переезд|квартал|путепровод|мост|обвод|поселок|городок|разворот|шлагбаум|обход|подъезд)\b/, // masculine
         function (onFullName,to__until,streetName,streetStatus) {
           streetName = streetName.replace(/чий\b/,"чьего"); // Заячий -> Заячьего
           streetName = streetName.replace(/тий\b/,"тьего"); // третий -> третьего
@@ -106,7 +106,7 @@ function Genitiv(text) {
           return to__until + streetName + streetStatus;
         });
       if (text !== result) { return result }
-      result = text.replace(/(\bдо\b)(.*?)\b(шоссе|кольцо)/, // neuter gender
+      result = text.replace(/(\bдо\b)(.*?)\b(шоссе|кольцо)\b/, // neuter gender
         function (onFullName,to__until,streetName,streetStatus) {
           streetName = streetName.replace(/ое\b/g,"ого"); // Нефтеюганское -> Нефтеюганского
           streetName = streetName.replace(/ье\b/,"ьего"); // третье -> третьего, Казачье -> Казачьего
