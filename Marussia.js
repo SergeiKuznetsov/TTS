@@ -74,7 +74,7 @@ function Genitiv(text) {
           return to__until + streetName + streetStatus;
         });
       if (text !== result) { return result }
-      result = text.replace(/(\bдо\b)(.*?)\b(проспект|переулок|проезд|тупик|бульвар|тракт|объезд|заезд|съезд|просек|микрорайон|взвоз|спуск|переезд|квартал|путепровод|мост|обвод|поселок|городок|разворот|шлагбаум|обход|подъезд)\b/, // masculine
+      result = text.replace(/(\bдо\b)(.*?)\b(проспект|переулок|проезд|тупик|бульвар|тракт|просек|взвоз|спуск|разъезд|переезд|квартал|путепровод|путеправо́д|мост|сад|сквер|тоннель|туннель|парк|проток|канал|остров|микрорайон|район|городок|посёлок|поселок|вал|проулок|объезд|заезд|съезд|обвод|шлагбаум|обход|подъезд)\b/, // masculine
         function (onFullName,to__until,streetName,streetStatus) {
           streetName = streetName.replace(/чий\b/,"чьего"); // Заячий -> Заячьего
           streetName = streetName.replace(/тий\b/,"тьего"); // третий -> третьего
@@ -84,31 +84,44 @@ function Genitiv(text) {
           streetName = streetName.replace(/ин\b/,"ина"); // Апраксин -> Апраксина
           streetName = streetName.replace(/-й\b/,"-го"); // 1-й -> 1-го
           switch (streetStatus) {
+
             case 'проспект': streetStatus = 'проспекта'; break;
             case 'переулок': streetStatus = 'переулка'; break;
             case 'проезд': streetStatus = 'проезда'; break;
             case 'тупик': streetStatus = 'тупика'; break;
             case 'бульвар': streetStatus = 'бульвара'; break;
             case 'тракт': streetStatus = 'тракта'; break;
-            case 'объезд': streetStatus = 'объезда'; break;
-            case 'заезд': streetStatus = 'заезда'; break;
-            case 'съезд': streetStatus = 'съезда'; break;
             case 'просек': streetStatus = 'просека'; break;
-            case 'микрорайон': streetStatus = 'микрорайона'; break;
             case 'взвоз': streetStatus = 'взвоза'; break;
             case 'спуск': streetStatus = 'спуска'; break;
+            case 'разъезд': streetStatus = 'разъезда'; break;
             case 'переезд': streetStatus = 'переезда'; break;
             case 'квартал': streetStatus = 'квартала'; break;
             case 'путепровод': streetStatus = 'путепровода'; break;
+            case 'путеправо́д': streetStatus = 'путеправо́да'; break;
             case 'мост': streetStatus = 'моста'; break;
-            case 'обвод': streetStatus = 'обвода'; break;
-            case 'поселок': streetStatus = 'поселка'; break;
+            case 'сад': streetStatus = 'сада'; break;
+            case 'сквер': streetStatus = 'сквера'; break;
+            case 'тоннель': streetStatus = 'тоннеля'; break;
+            case 'туннель': streetStatus = 'туннеля'; break;
+            case 'парк': streetStatus = 'парка'; break;
+            case 'проток': streetStatus = 'протока'; break;
+            case 'канал': streetStatus = 'канала'; break;
+            case 'остров': streetStatus = 'острова'; break;
+            case 'микрорайон': streetStatus = 'микрорайона'; break;
+            case 'район': streetStatus = 'района'; break;
             case 'городок': streetStatus = 'городка'; break;
-            case 'разворот': streetStatus = 'разворота'; break;
+            case 'посёлок': streetStatus = 'посёлка'; break;
+            case 'поселок': streetStatus = 'поселка'; break;
+            case 'вал': streetStatus = 'вала'; break;
+            case 'проулок': streetStatus = 'проулка'; break;
+            case 'объезд': streetStatus = 'объезда'; break;
+            case 'заезд': streetStatus = 'заезда'; break;
+            case 'съезд': streetStatus = 'съезда'; break;
+            case 'обвод': streetStatus = 'обвода'; break;
             case 'шлагбаум': streetStatus = 'шлагбаума'; break;
             case 'обход': streetStatus = 'обхода'; break;
             case 'подъезд': streetStatus = 'подъезда'; break;
-            case 'кольцо': streetStatus = 'кольца'; break;
           }
           return to__until + streetName + streetStatus;
         });
