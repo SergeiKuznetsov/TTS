@@ -43,7 +43,7 @@ function Accusativ(text) {
 * @customfunction
 */
 function Genitiv(text) {
-      result = text.replace(/(\bдо\b)(.*?)\b(улица|набережная|дорога|линия|аллея|площадь|просека|автодорога|эстакада|магистраль|дамба)\b/, // feminine
+      result = text.replace(/(\bдо\b)(.*?)\b(улица|набережная|дорога|линия|аллея|площадь|просека|автодорога|эстакада|магистраль|дамба|хорда|коса|деревня|переправа|площадка|дорожка|трасса)\b/, // feminine
         function (onFullName,to__until,streetName,streetStatus) {
           streetName = streetName.replace(/ая\b/g,"ой"); // Пушкинская -> Пушкинской, Садовая-Спасская -> Садовой-Спасской
           streetName = streetName.replace(/яя\b/g,"ей"); // Зимняя -> Зимней
@@ -63,6 +63,13 @@ function Genitiv(text) {
             case 'эстакада': streetStatus = 'эстакады'; break;
             case 'магистраль': streetStatus = 'магистрали'; break;
             case 'дамба': streetStatus = 'дамбы'; break;
+            case 'хорда': streetStatus = 'хорды'; break;
+            case 'коса': streetStatus = 'косы'; break;
+            case 'деревня': streetStatus = 'деревни'; break;
+            case 'переправа': streetStatus = 'переправы'; break;
+            case 'площадка': streetStatus = 'площадки'; break;
+            case 'дорожка': streetStatus = 'дорожки'; break;
+            case 'трасса': streetStatus = 'трассы'; break;
           }
           return to__until + streetName + streetStatus;
         });
