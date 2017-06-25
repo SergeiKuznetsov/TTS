@@ -1,13 +1,12 @@
-/** Accusativ - винительный падеж. Кого? Что?
+/** Accusative - винительный падеж. Кого? Что?
 * turn <left/right> on <streetName>  * поверните <направо/налево> на <улицу>
 * exit <left/right> on <streetName> * съезд <справа/слева> на <улицу>
 * keep <left/right> on <streetName> * держитесь <левее/правее> на <улицу>
 * make u-turn on <streetName> * развернитесь на <улицу>
 * @customfunction
 */
-function Accusativ(text) {
-    text = text.replace(/(.*\bна\b)(.*?)\b(улица|набережная|дорога|линия|аллея|площадь|просека|автодорога|эстакада|магистраль|дамба|хорда|коса|деревня|переправа|площадка|дорожка|трасса)\b/, // feminine
-
+function Accusative(text) {
+    text = text.replace(/(.*\bна\b)(.*?)\b(улица|набережная|дорога|линия|аллея|площадь|просека|автодорога|эстакада|магистраль|дамба|хорда|коса|деревня|переправа|площадка|дорожка|трасса)\b/u, // feminine
       function (onFullName,on,streetName,streetStatus) {
         streetName = streetName.replace(/ая\b/g,"ую"); // Пушкинская -> Пушкинскую
         streetName = streetName.replace(/яя\b/g,"юю"); // Зимняя -> Зимнюю
@@ -35,14 +34,14 @@ function Accusativ(text) {
         return on + streetName + streetStatus;
       });
   return text;
-} // Accusativ
+} // Accusative
 
-/** Genitiv - родительный падеж. Кого? Чего?
+/** Genitive - родительный падеж. Кого? Чего?
 * continue straight for X minutes to <streetName>.
 * продолжайте движение около X мин. до <улицы>
 * @customfunction
 */
-function Genitiv(text) {
+function Genitive(text) {
   if ( text.match(/до поворота/i) ) return text;
       result = text.replace(/(\bдо\b)(.*?)\b(улица|набережная|дорога|линия|аллея|площадь|просека|автодорога|эстакада|магистраль|дамба|хорда|коса|деревня|переправа|площадка|дорожка|трасса)\b/, // feminine
         function (onFullName,to__until,streetName,streetStatus) {
@@ -85,7 +84,6 @@ function Genitiv(text) {
           streetName = streetName.replace(/ин\b/,"ина"); // Апраксин -> Апраксина
           streetName = streetName.replace(/-й\b/,"-го"); // 1-й -> 1-го
           switch (streetStatus) {
-
             case 'проспект': streetStatus = 'проспекта'; break;
             case 'переулок': streetStatus = 'переулка'; break;
             case 'проезд': streetStatus = 'проезда'; break;
@@ -139,7 +137,7 @@ function Genitiv(text) {
           return to__until + streetName + streetStatus;
         });
       return result;
-} // Genitiv
+} // Genitive
 
 /** Dative - дательный падеж. Кому? Чему?
 * Let's take <streetName>  * Поедем по <улице>
@@ -241,12 +239,12 @@ function Dative(text) {
 
 if ( text.match(/(поверните|съезд|держитесь|развернитесь).* на/i) )
 {
-  text = Accusativ(text);
+  text = Accusative(text);
 };
 
 if ( text.match(/продолжайте движение/i) )
 {
-  text = Genitiv(text);
+  text = Genitive(text);
 };
 
 
