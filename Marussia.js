@@ -127,13 +127,14 @@ function Genitiv(text) {
           return to__until + streetName + streetStatus;
         });
       if (text !== result) { return result }
-      result = text.replace(/(\bдо\b)(.*?)\b(шоссе|кольцо)\b/, // neuter gender
+      result = text.replace(/(\bдо\b)(.*?)\b(шоссе|кольцо|село)\b/, // neuter gender
         function (onFullName,to__until,streetName,streetStatus) {
           streetName = streetName.replace(/ое\b/g,"ого"); // Нефтеюганское -> Нефтеюганского
           streetName = streetName.replace(/ье\b/,"ьего"); // третье -> третьего, Казачье -> Казачьего
           streetName = streetName.replace(/-е\b/,"-го"); // 1-е -> 1-го
           switch (streetStatus) {
             case 'кольцо': streetStatus = 'кольца'; break;
+            case 'село': streetStatus = 'села'; break;
           }
           return to__until + streetName + streetStatus;
         });
@@ -224,13 +225,14 @@ function Dative(text) {
       }
       return to__until + streetName + streetStatus;
     });
-  text = text.replace(/(\bПоедем по\b|,)(.*?)\b(шоссе|кольцо)\b/g, // neuter gender
+  text = text.replace(/(\bПоедем по\b|,)(.*?)\b(шоссе|кольцо|село)\b/g, // neuter gender
     function (onFullName,to__until,streetName,streetStatus) {
       streetName = streetName.replace(/ое\b/g,"ому"); // Нефтеюганское -> Нефтеюганскому
       streetName = streetName.replace(/ье\b/,"ьему"); // третье -> третьему, Казачье -> Казачьему
       streetName = streetName.replace(/-е\b/,"-му"); // 1-е -> 1-му
       switch (streetStatus) {
         case 'кольцо': streetStatus = 'кольцу'; break;
+        case 'село': streetStatus = 'селу'; break;
       }
       return to__until + streetName + streetStatus;
     });
