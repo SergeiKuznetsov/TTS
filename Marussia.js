@@ -43,6 +43,7 @@ function Accusativ(text) {
 * @customfunction
 */
 function Genitiv(text) {
+  if ( text.match(/до поворота/i) ) return text;
       result = text.replace(/(\bдо\b)(.*?)\b(улица|набережная|дорога|линия|аллея|площадь|просека|автодорога|эстакада|магистраль|дамба|хорда|коса|деревня|переправа|площадка|дорожка|трасса)\b/, // feminine
         function (onFullName,to__until,streetName,streetStatus) {
           streetName = streetName.replace(/ая\b/g,"ой"); // Пушкинская -> Пушкинской, Садовая-Спасская -> Садовой-Спасской
