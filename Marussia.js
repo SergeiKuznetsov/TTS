@@ -5,7 +5,7 @@
 * make u-turn on <streetName> * развернитесь на <улицу>
 * @customfunction
 */
-function Accusative(text) {
+function Accusative(text) { // Utilities.sleep(200);
     text = text.replace(/(.*\bна\b)(.*?)\b(улица|набережная|дорога|линия|аллея|площадь|просека|автодорога|эстакада|магистраль|дамба|хорда|коса|деревня|переправа|площадка|дорожка|трасса)\b/u, // feminine
       function (onFullName,on,streetName,streetStatus) {
         streetName = streetName.replace(/ая\b/g,"ую"); // Пушкинская -> Пушкинскую
@@ -41,7 +41,7 @@ function Accusative(text) {
 * продолжайте движение около X мин. до <улицы>
 * @customfunction
 */
-function Genitive(text) {
+function Genitive(text) { //Utilities.sleep(200);
   if ( text.match(/до поворота/i) ) return text;
       result = text.replace(/(\bдо\b)(.*?)\b(улица|набережная|дорога|линия|аллея|площадь|просека|автодорога|эстакада|магистраль|дамба|хорда|коса|деревня|переправа|площадка|дорожка|трасса)\b/, // feminine
         function (onFullName,to__until,streetName,streetStatus) {
@@ -143,7 +143,7 @@ function Genitive(text) {
 * Let's take <streetName>  * Поедем по <улице>
 * @customfunction
 */
-function Dative(text) {
+function Dative(text) { // Utilities.sleep(200);
   text = text.replace(/(\bПоедем по\b|,)(.*?)\b(улица|набережная|дорога|линия|аллея|площадь|просека|автодорога|эстакада|магистраль|дамба|хорда|коса|деревня|переправа|площадка|дорожка|трасса)\b/g, // feminine
     function (onFullName,to__until,streetName,streetStatus) {
       streetName = streetName.replace(/ая\b/g,"ой"); // Пушкинская -> Пушкинской, Садовая-Спасская -> Садовой-Спасской
