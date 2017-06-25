@@ -1,13 +1,12 @@
-/** Accusativ - винительный падеж. Кого? Что?
+/** Accusative - винительный падеж. Кого? Что?
 * turn <left/right> on <streetName>  * поверните <направо/налево> на <улицу>
 * exit <left/right> on <streetName> * съезд <справа/слева> на <улицу>
 * keep <left/right> on <streetName> * держитесь <левее/правее> на <улицу>
 * make u-turn on <streetName> * развернитесь на <улицу>
 * @customfunction
 */
-function Accusativ(text) {
+function Accusative(text) { // Utilities.sleep(200);
     text = text.replace(/(.*\bна\b)(.*?)\b(улица|набережная|дорога|линия|аллея|площадь|просека|автодорога|эстакада|магистраль|дамба|хорда|коса|деревня|переправа|площадка|дорожка|трасса)\b/, // feminine
-
       function (onFullName,on,streetName,streetStatus) {
         streetName = streetName.replace(/ая\b/g,"ую"); // Пушкинская -> Пушкинскую
         streetName = streetName.replace(/яя\b/g,"юю"); // Зимняя -> Зимнюю
@@ -35,14 +34,14 @@ function Accusativ(text) {
         return on + streetName + streetStatus;
       });
   return text;
-} // Accusativ
+} // Accusative
 
-/** Genitiv - родительный падеж. Кого? Чего?
+/** Genitive - родительный падеж. Кого? Чего?
 * continue straight for X minutes to <streetName>.
 * продолжайте движение около X мин. до <улицы>
 * @customfunction
 */
-function Genitiv(text) {
+function Genitive(text) { //Utilities.sleep(200);
   if ( text.match(/до поворота/i) ) return text;
       result = text.replace(/(\bдо\b)(.*?)\b(улица|набережная|дорога|линия|аллея|площадь|просека|автодорога|эстакада|магистраль|дамба|хорда|коса|деревня|переправа|площадка|дорожка|трасса)\b/, // feminine
         function (onFullName,to__until,streetName,streetStatus) {
@@ -85,7 +84,6 @@ function Genitiv(text) {
           streetName = streetName.replace(/ин\b/,"ина"); // Апраксин -> Апраксина
           streetName = streetName.replace(/-й\b/,"-го"); // 1-й -> 1-го
           switch (streetStatus) {
-
             case 'проспект': streetStatus = 'проспекта'; break;
             case 'переулок': streetStatus = 'переулка'; break;
             case 'проезд': streetStatus = 'проезда'; break;
@@ -127,25 +125,26 @@ function Genitiv(text) {
           return to__until + streetName + streetStatus;
         });
       if (text !== result) { return result }
-      result = text.replace(/(\bдо\b)(.*?)\b(шоссе|кольцо)\b/, // neuter gender
+      result = text.replace(/(\bдо\b)(.*?)\b(шоссе|кольцо|село)\b/, // neuter gender
         function (onFullName,to__until,streetName,streetStatus) {
           streetName = streetName.replace(/ое\b/g,"ого"); // Нефтеюганское -> Нефтеюганского
           streetName = streetName.replace(/ье\b/,"ьего"); // третье -> третьего, Казачье -> Казачьего
           streetName = streetName.replace(/-е\b/,"-го"); // 1-е -> 1-го
           switch (streetStatus) {
             case 'кольцо': streetStatus = 'кольца'; break;
+            case 'село': streetStatus = 'села'; break;
           }
           return to__until + streetName + streetStatus;
         });
       return result;
-} // Genitiv
+} // Genitive
 
 /** Dative - дательный падеж. Кому? Чему?
 * Let's take <streetName>  * Поедем по <улице>
 * @customfunction
 */
-function Dative(text) {
-  result = text.replace(/(\bПоедем по\b)(.*?)\b(улица|набережная|дорога|линия|аллея|площадь|просека|автодорога|эстакада|магистраль|дамба|хорда|коса|деревня|переправа|площадка|дорожка|трасса)\b/, // feminine
+function Dative(text) { // Utilities.sleep(200);
+  text = text.replace(/(\bПоедем по\b|,)(.*?)\b(улица|набережная|дорога|линия|аллея|площадь|просека|автодорога|эстакада|магистраль|дамба|хорда|коса|деревня|переправа|площадка|дорожка|трасса)\b/g, // feminine
     function (onFullName,to__until,streetName,streetStatus) {
       streetName = streetName.replace(/ая\b/g,"ой"); // Пушкинская -> Пушкинской, Садовая-Спасская -> Садовой-Спасской
       streetName = streetName.replace(/яя\b/g,"ей"); // Зимняя -> Зимней
@@ -154,29 +153,28 @@ function Dative(text) {
       streetName = streetName.replace(/3-я\b/,"3-ей"); // 3-я -> 3-ей
       streetName = streetName.replace(/-я\b/,"-ой"); // 1-я -> 1-ой
       switch (streetStatus) {
-        case 'улица': streetStatus = 'улицы'; break;
+        case 'улица': streetStatus = 'улице'; break;
         case 'набережная': streetStatus = 'набережной'; break;
-        case 'дорога': streetStatus = 'дороги'; break;
+        case 'дорога': streetStatus = 'дороге'; break;
         case 'линия': streetStatus = 'линии'; break;
-        case 'аллея': streetStatus = 'аллеи'; break;
+        case 'аллея': streetStatus = 'аллее'; break;
         case 'площадь': streetStatus = 'площади'; break;
-        case 'просека': streetStatus = 'просеки'; break;
-        case 'автодорога': streetStatus = 'автодороги'; break;
-        case 'эстакада': streetStatus = 'эстакады'; break;
+        case 'просека': streetStatus = 'просеке'; break;
+        case 'автодорога': streetStatus = 'автодороге'; break;
+        case 'эстакада': streetStatus = 'эстакаде'; break;
         case 'магистраль': streetStatus = 'магистрали'; break;
-        case 'дамба': streetStatus = 'дамбы'; break;
-        case 'хорда': streetStatus = 'хорды'; break;
-        case 'коса': streetStatus = 'косы'; break;
-        case 'деревня': streetStatus = 'деревни'; break;
-        case 'переправа': streetStatus = 'переправы'; break;
-        case 'площадка': streetStatus = 'площадки'; break;
-        case 'дорожка': streetStatus = 'дорожки'; break;
-        case 'трасса': streetStatus = 'трассы'; break;
+        case 'дамба': streetStatus = 'дамбе'; break;
+        case 'хорда': streetStatus = 'хорде'; break;
+        case 'коса': streetStatus = 'косе'; break;
+        case 'деревня': streetStatus = 'деревне'; break;
+        case 'переправа': streetStatus = 'переправе'; break;
+        case 'площадка': streetStatus = 'площадке'; break;
+        case 'дорожка': streetStatus = 'дорожке'; break;
+        case 'трасса': streetStatus = 'трассе'; break;
       }
       return to__until + streetName + streetStatus;
     });
-  if (text !== result) { return result }
-  result = text.replace(/(\bдо\b)(.*?)\b(проспект|переулок|проезд|тупик|бульвар|тракт|просек|взвоз|спуск|разъезд|переезд|квартал|путепровод|путеправо́д|мост|сад|сквер|тоннель|туннель|парк|проток|канал|остров|микрорайон|район|городок|посёлок|поселок|вал|проулок|объезд|заезд|съезд|обвод|обход|подъезд)\b/, // masculine
+  text = text.replace(/(\bПоедем по\b|,)(.*?)\b(проспект|переулок|проезд|тупик|бульвар|тракт|просек|взвоз|спуск|разъезд|переезд|квартал|путепровод|путеправо́д|мост|сад|сквер|тоннель|туннель|парк|проток|канал|остров|микрорайон|район|городок|посёлок|поселок|вал|проулок|объезд|заезд|съезд|обвод|обход|подъезд)\b/g, // masculine
     function (onFullName,to__until,streetName,streetStatus) {
       streetName = streetName.replace(/чий\b/,"чьему"); // Заячий -> Заячьему
       streetName = streetName.replace(/тий\b/,"тьему"); // третий -> третьему
@@ -225,26 +223,33 @@ function Dative(text) {
       }
       return to__until + streetName + streetStatus;
     });
-  if (text !== result) { return result }
-  result = text.replace(/(\bдо\b)(.*?)\b(шоссе|кольцо)\b/, // neuter gender
+  text = text.replace(/(\bПоедем по\b|,)(.*?)\b(шоссе|кольцо|село)\b/g, // neuter gender
     function (onFullName,to__until,streetName,streetStatus) {
       streetName = streetName.replace(/ое\b/g,"ому"); // Нефтеюганское -> Нефтеюганскому
       streetName = streetName.replace(/ье\b/,"ьему"); // третье -> третьему, Казачье -> Казачьему
       streetName = streetName.replace(/-е\b/,"-му"); // 1-е -> 1-му
       switch (streetStatus) {
         case 'кольцо': streetStatus = 'кольцу'; break;
+        case 'село': streetStatus = 'селу'; break;
       }
       return to__until + streetName + streetStatus;
     });
-  return result;
+  return text;
 } // Dative
 
 if ( text.match(/(поверните|съезд|держитесь|развернитесь).* на/i) )
 {
-  text = Accusativ(text);
+  text = Accusative(text);
 };
 
 if ( text.match(/продолжайте движение/i) )
 {
-  text = Genitiv(text);
-}; 
+  text = Genitive(text);
+};
+
+
+if ( text.match(/Поедем по/i) )
+{
+  text = Dative(text);
+};
+
