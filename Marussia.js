@@ -237,18 +237,15 @@ function Dative(text) { // Utilities.sleep(200);
   return text;
 } // Dative
 
-if ( text.match(/(поверните|съезд|держитесь|развернитесь).* на/i) )
+if ( text.match(/(поверните|съезд|держитесь|развернитесь|продолжайте).* на/i) )
 {
   text = Accusative(text);
-};
-
-if ( text.match(/продолжайте движение/i) )
+}
+else if ( text.match(/продолжайте движение/i) )
 {
   text = Genitive(text);
-};
-
-
-if ( text.match(/Поедем по/i) )
+}
+else if ( text.match(/Поедем по/i) )
 {
   text = Dative(text);
 };
