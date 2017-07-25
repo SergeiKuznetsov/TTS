@@ -33,7 +33,7 @@ function Accusative(text) { // Utilities.sleep(200);
         }
         return on + streetName + streetStatus;
       });
-  text = text.replace(/(.*?)\s+(улицу|дорогу)$/,"$1");
+  text = text.replace(/Окружную дорогу$/,"Окружную");
   return text;
 } // Accusative
 
