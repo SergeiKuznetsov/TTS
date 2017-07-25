@@ -75,7 +75,7 @@ function Genitive(text) { //Utilities.sleep(200);
           return to__until + streetName + streetStatus;
         });
       if (text !== result) { return result }
-      result = text.replace(/(\bдо\b)(.*?)\b(проспект|переулок|проезд|тупик|бульвар|тракт|просек|взвоз|спуск|разъезд|переезд|квартал|путепровод|путеправо́д|мост|сад|сквер|тоннель|туннель|парк|проток|канал|остров|микрорайон|район|городок|посёлок|поселок|вал|проулок|объезд|заезд|съезд|обвод|шлагбаум|обход|подъезд)\b/, // masculine
+      result = text.replace(/(\bдо\b)(.*?)\b(проспект|переулок|проезд|тупик|бульвар|тракт|просек|взвоз|спуск|разъезд|переезд|квартал|путепровод|путеправо́д|мост|сад|сквер|тоннель|туннель|парк|проток|канал|остров|микрорайон|район|городок|посёлок|поселок|вал|проулок|объезд|заезд|съезд|обвод|шлагбаум|обход|подъезд|выход)\b/, // masculine
         function (onFullName,to__until,streetName,streetStatus) {
           streetName = streetName.replace(/чий\b/,"чьего"); // Заячий -> Заячьего
           streetName = streetName.replace(/тий\b/,"тьего"); // третий -> третьего
@@ -122,6 +122,7 @@ function Genitive(text) { //Utilities.sleep(200);
             case 'шлагбаум': streetStatus = 'шлагбаума'; break;
             case 'обход': streetStatus = 'обхода'; break;
             case 'подъезд': streetStatus = 'подъезда'; break;
+            case 'выход': streetStatus = 'выхода'; break;
           }
           return to__until + streetName + streetStatus;
         });
@@ -175,7 +176,7 @@ function Dative(text) { // Utilities.sleep(200);
       }
       return to__until + streetName + streetStatus;
     });
-  text = text.replace(/(\bПоедем по\b|,)(.*?)\b(проспект|переулок|проезд|тупик|бульвар|тракт|просек|взвоз|спуск|разъезд|переезд|квартал|путепровод|путеправо́д|мост|сад|сквер|тоннель|туннель|парк|проток|канал|остров|микрорайон|район|городок|посёлок|поселок|вал|проулок|объезд|заезд|съезд|обвод|обход|подъезд)\b/g, // masculine
+  text = text.replace(/(\bПоедем по\b|,)(.*?)\b(проспект|переулок|проезд|тупик|бульвар|тракт|просек|взвоз|спуск|разъезд|переезд|квартал|путепровод|путеправо́д|мост|сад|сквер|тоннель|туннель|парк|проток|канал|остров|микрорайон|район|городок|посёлок|поселок|вал|проулок|объезд|заезд|съезд|обвод|обход|подъезд|выход)\b/g, // masculine
     function (onFullName,to__until,streetName,streetStatus) {
       streetName = streetName.replace(/чий\b/,"чьему"); // Заячий -> Заячьему
       streetName = streetName.replace(/тий\b/,"тьему"); // третий -> третьему
@@ -221,6 +222,7 @@ function Dative(text) { // Utilities.sleep(200);
         case 'обвод': streetStatus = 'обводу'; break;
         case 'обход': streetStatus = 'обходу'; break;
         case 'подъезд': streetStatus = 'подъезду'; break;
+        case 'выход': streetStatus = 'выходу'; break;
       }
       return to__until + streetName + streetStatus;
     });
